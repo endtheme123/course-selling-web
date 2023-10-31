@@ -1,0 +1,103 @@
+
+
+body {
+    margin:0;
+  background-image: url("./media/image/sydney.jpg");  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    box-shadow: inset 0 0 0 2000px rgba(0, 32, 23, 0.6);
+    background-size: cover;
+    background-position: 50%;
+    overflow: scroll;
+}
+
+
+
+  form {
+
+    margin: 100px;
+    width: 500px;
+    border: 2px solid #ccc;
+    padding:30px;
+    background: #fff;
+    border-radius: 15px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  input {
+    display: block;
+    border: 2px solid #ccc;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+  }
+
+  select {
+    display: block;
+    border: 2px solid #ccc;
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto 30px auto;
+    border-radius: 5px;
+    color: #888;
+  }
+
+  label {
+    color: #888;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  button {
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+  }
+
+  button:hover{
+    opacity: .7;
+  }
+
+  #logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .error {
+    background: #fed4d4;
+    color:#A94442;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    margin: 20px auto;
+  }
+
+  .ca {
+    font-size: 14px;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    columns: #444;
+  }
+  .ca:hover {
+    text-decoration: underline;
+  }
+
+  button a {
+    text-decoration: none;
+    color: #fff;
+  }
+

@@ -1,0 +1,239 @@
+/*
+filename: styles.css
+author: Nguyen Ha Huy Hoang, Nguyen Duc Thinh, Nguyen Gia Binh,Nguyen Manh Duc
+created: 14/2/2023
+last modified: 1/3/2023
+description: product.php, index.php, payment.php, about.php, enhancements.php
+*/
+
+
+ /* overall font setting for the whole site */
+ @font-face {
+    font-family: 'SF Pro Display';
+    src: url('fonts/SFPRODISPLAYREGULAR.OTF') format('opentype');
+    font-style: normal;
+  }
+ 
+  /* footer basic settings */
+  footer {
+    background-color: #414141;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    clear: both;
+ 
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  }
+ 
+ 
+  /* remove body margin */
+  body,
+  html {
+    margin: 0px;
+  }
+ 
+  /* Style for all heading tags */
+ 
+  /* overal and responsive setting for headings  */
+ 
+  h1,
+  .h1 {
+    width: 95%;
+    text-align: center;
+    margin-bottom: 5% !important;
+    font-size: 5vw !important;
+    font-variant: small-caps;
+  }
+ 
+  @media (min-width: 1200px) {
+ 
+    h1,
+    .h1 {
+      font-size: 2.5rem;
+    }
+  }
+ 
+  * {
+    font-family: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    /* font-weight: 400; */
+    /* font-size: 1vw; */
+  }
+ 
+ 
+  @media (min-width: 1200px) {
+ 
+    h1,
+    .h1 {
+      font-size: 2.5rem;
+    }
+  }
+ 
+  h2,
+  .h2 {
+    font-size: calc(1.325rem + 0.9vw);
+  }
+ 
+  @media (min-width: 1200px) {
+ 
+    h2,
+    .h2 {
+      font-size: 2rem;
+    }
+  }
+ 
+  h3,
+  .h3 {
+    font-size: calc(1.3rem + 0.6vw);
+  }
+ 
+  @media (min-width: 1200px) {
+ 
+    h3,
+    .h3 {
+      font-size: 1.75rem;
+    }
+  }
+ 
+  h6,
+  .h6,
+  h5,
+  .h5,
+  h4,
+  .h4,
+  h3,
+  .h3,
+  h2,
+  .h2,
+  h1,
+  .h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+ 
+  }
+ 
+ 
+ 
+  /* remove body margin */
+  body,
+  html {
+    margin: 0px;
+  }
+ 
+  /* Style for all heading tags */
+ 
+ 
+ 
+  @media only screen and (min-width: 768px) {
+ 
+    /* For desktop: */
+    * {
+      font-size: 1vw;
+    }
+ 
+ 
+    /* header setting and nav bar align */
+    header {
+      background-color: white;
+      color: white;
+      /* display: flex; */
+      /* justify-content: space-between; */
+      padding: 1.5% 5% 1.5% 5%;
+ 
+    }
+ 
+    /* align name only item in nav bar */
+    header nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      width: 90%;
+    }
+ 
+    /* adjust position for items in the nav bar */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+ 
+    /* Add highlight for current page on nav bar */
+    .nav-link.active {
+      border-bottom: 3px solid #F7E319;
+    }
+ 
+    /* margin setup for each name in nav bar */
+    header nav li {
+      margin-right: 2%;
+    }
+ 
+    /* remove default a tag settings */
+    header nav a {
+      color: black;
+      text-decoration: none;
+    }
+ 
+    /* adjust the size of */
+    .navbar_brand {
+      
+      margin-right: 2.5%;
+    }
+    /*  */
+   header .form_inline {
+    margin-right: 5%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+    
+    
+  }
+  /* align items in nav bar including the searchbar */
+  .navbar_collapse {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-grow: 1;
+    /* align-items: center; */
+    width: 100%;
+    /* margin-left: 10%; */
+
+  }
+
+
+  /* adjust the size of the logo */
+  .logo_image {
+    border-radius: 25%;
+    /* overflow-clip-margin: 0; */
+    /* width: 100%; */
+    /* height: auto; */
+  }
+  .button {
+    float: right;
+    background: #555;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    width: 7%;
+    text-decoration: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3%;
+    
+  }
+
+  .button:hover{
+    opacity: .7;
+  }
+  .form_control {
+    width: 40%;
+  }
+
+
+  } 
