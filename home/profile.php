@@ -64,6 +64,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
     <h2>Introduction</h2>
     <div >
       <p><b>Name:</b><?php echo $row['FamilyName']." ".$row['FirstName'] ?></p>
+      <p><b>Email:</b> <?php echo $row['Email']?>   </p>
       <p><b>Highest Education Level:</b><?php echo $row['HighestEduLevel'] ?></p>
       <p><b>Wanted Postion:</b><?php echo $row['WantedPosition'] ?></p>
     </div>
@@ -121,6 +122,8 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
     // echo isset($_GET['seach']);
     // echo $sql;
       $result3 = mysqli_query($conn, $sql3);
+
+
       while ($row3 = mysqli_fetch_assoc($result3)) {
     ?>
 

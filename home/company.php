@@ -34,6 +34,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
   <main>
   <?php
   $sql = "SELECT * FROM company WHERE CompanyID = ". $_SESSION['CompanyID'];
+  echo $sql;
         
         
       
