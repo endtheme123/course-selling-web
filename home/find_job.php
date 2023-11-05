@@ -50,15 +50,15 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
 
               <ul>
                 <li class="Option">
-                  <label for="Opt_4"> <input class="checkbox" type="checkbox" id="Opt_4" name="domain[]" value="Hospitality">Hospitality</label>
+                  <label for="Opt_4"> <input class="checkbox" type="checkbox" id="Opt_4" name="domain[]" value="AI">AI</label>
                 </li>
 
                 <li class="Option">
-                  <label for="Opt_2"> <input class="checkbox" type="checkbox" id="Opt_2" name="domain[]" value="Beauty">Beauty</label>
+                  <label for="Opt_2"> <input class="checkbox" type="checkbox" id="Opt_2" name="domain[]" value="DevOps">DevOps</label>
                 </li>
 
                 <li class="Option">
-                  <label for="Opt_3"> <input class="checkbox" type="checkbox" id="Opt_3" name="domain[]" value="Food"> Food
+                  <label for="Opt_3"> <input class="checkbox" type="checkbox" id="Opt_3" name="domain[]" value="Data"> Data
                     </label>
                 </li>
 

@@ -51,15 +51,15 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
 
               <ul>
                 <li class="Option">
-                  <label for="Opt_4"> <input class="checkbox" type="checkbox" id="Opt_4" name="domain[]" value="Hospitality">Hospitality</label>
+                  <label for="Opt_4"> <input class="checkbox" type="checkbox" id="Opt_4" name="domain[]" value="AI">AI</label>
                 </li>
 
                 <li class="Option">
-                  <label for="Opt_2"> <input class="checkbox" type="checkbox" id="Opt_2" name="domain[]" value="Beauty">Beauty</label>
+                  <label for="Opt_2"> <input class="checkbox" type="checkbox" id="Opt_2" name="domain[]" value="DevOps">DevOps</label>
                 </li>
 
                 <li class="Option">
-                  <label for="Opt_3"> <input class="checkbox" type="checkbox" id="Opt_3" name="domain[]" value="Food"> Food
+                  <label for="Opt_3"> <input class="checkbox" type="checkbox" id="Opt_3" name="domain[]" value="Data"> Data
                     </label>
                 </li>
 
@@ -142,32 +142,6 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
             <?php } ?>
         </div>
 
-
-        <div class = "course">
-          <img src=<?php echo $row['CoverImage'] ?> alt="gg">
-          <h3><b><?php echo $row['CourseName'] ?> </b></h3>
-          <h4><?php echo $row['Cost'] ?> VND</h4>
-          <h4> <b>Length: </b><?php echo $row['Time'] ?> lectures</h4>
-          <h4><b>Scholarship: </b> <?php echo $row['Scholarship'] ?>%</h4>
-          <?php 
-    $sql2 = "SELECT * FROM courseownership WHERE UserID = ".$_SESSION['id']. " AND CourseID = ".$row['CourseID'];
-       
-    
-      
-    // echo isset($_GET['seach']);
-    // echo $sql;
-      $result2 = mysqli_query($conn, $sql2);
-      if(mysqli_num_rows($result2)===0) {
-        
-    ?>
-          <a class="button" href="course_submit.php?CourseID=<?php echo $row['CourseID'] ?>">Submit</a>
-          <?php } else { ?> 
-            
-            <p class="button submited">Submitted</p>
-            <?php } ?>
-        </div>
-
-        
         
 
         <?php } ?>
