@@ -14,7 +14,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
   <!-- requirement head template -->
   <meta name="description" content="A simple index page">
   <meta name="keywords" content="HTML, simple, webpage">
-  <meta name="author" content="Nguyen Duc Thinh">
+  <meta name="author" content="Nguyen Ha Huy Hoang">
   <!-- responsive setup -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favico/apple-touch-icon.png">
@@ -40,7 +40,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
         
       
         // echo isset($_GET['seach']);
-        // echo $sql;
+         //echo $sql;
           $result = mysqli_query($conn, $sql);
           while ($row = mysqli_fetch_assoc($result)) {
 
@@ -55,7 +55,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
       <img src=<?php echo $row['ProfileImage'] ?>  alt="" />
     
       </div>
-     <h2><?php echo $row['FamilyName']." ".$row['FirstName'] ?></h2> 
+     <h2><?php echo $row['username'] ?></h2> 
      <h2 class="subname"><?php echo $row['Email'] ?> </h2> 
   </div>
   </section>
@@ -63,50 +63,14 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
   <section class="company_content">
     <h2>Introduction</h2>
     <div >
-      <p><b>Name:</b><?php echo $row['FamilyName']." ".$row['FirstName'] ?></p>
-      <p><b>Email:</b> <?php echo $row['Email']?>   </p>
-      <p><b>Highest Education Level:</b><?php echo $row['HighestEduLevel'] ?></p>
-      <p><b>Wanted Postion:</b><?php echo $row['WantedPosition'] ?></p>
+      <p><b>Username: </b><?php echo $row['username'] ?></p>
+      <p><b>Email: </b> <?php echo $row['Email']?>   </p>
     </div>
 
 
   </section>
 
-  <section class="company_content" >
-    <h2>Exam</h2>
-    <div class= "blogs">
-    <?php 
-    $sql2 = "select t.UserID, t.FinishDate, t.Result, test.TestName, test.Overview
-    from testresult t
-    INNER JOIN test on t.TestID = test.TestID
-    inner join (
-        select UserID,TestID, max(FinishDate) as MaxDate
-        from testresult
-        group by UserID, TestID
-    ) tm on t.UserID = tm.UserID and t.FinishDate = tm.MaxDate
-    WHERE t.UserID = ".$_SESSION['id'];
-        
-    
-      
-    // echo isset($_GET['seach']);
-    // echo $sql;
-      $result2 = mysqli_query($conn, $sql2);
-      while ($row2 = mysqli_fetch_assoc($result2)) {
-    ?>
-
-    <a href="">
-    
-      <h4><?php echo $row2['TestName'] ?> </h4>
-      <hr>
-      <p><b>Score: </b> <?php echo $row2['Result'] ?></p>
-      <p><b>Overview: </b><?php echo strlen($row2['Overview']) > 75 ? substr($row2['Overview'],0,75)."..." : $row2['Overview'] ?></p>
-    
-    </a>
-    
-        <?php } ?>
-        </div>
-  </section>
-
+  
   <section class="company_content">
     <h2>Course</h2>
     <div class= "blogs">
@@ -120,7 +84,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['username'])){
     
       
     // echo isset($_GET['seach']);
-    // echo $sql;
+    // echo $sql3;
       $result3 = mysqli_query($conn, $sql3);
 
 

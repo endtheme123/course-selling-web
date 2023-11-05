@@ -39,7 +39,7 @@ if (isset($_POST['hedu']) && isset($_POST['skill']) && isset($_POST['position'])
         
         $pass = md5($_SESSION['password']);
 
-        $sql = "SELECT * FROM User WHERE username = '".$_SESSION['uname']."'";
+        $sql = "SELECT * FROM user WHERE username = '".$_SESSION['uname']."'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result)>0) {
@@ -55,7 +55,7 @@ if (isset($_POST['hedu']) && isset($_POST['skill']) && isset($_POST['position'])
                 PhoneNumber, 
                 Address, 
                 Password, 
-                UserType) 
+                userType) 
             VALUES ('"
                 .$_SESSION['fname']."','"
                 .$_SESSION['faname']."','"
@@ -75,15 +75,15 @@ if (isset($_POST['hedu']) && isset($_POST['skill']) && isset($_POST['position'])
             $result2 = mysqli_query($conn, $sql2);
             $id = mysqli_insert_id($conn);
             $sql3 = "INSERT INTO student(
-                UserID, 
+                userID, 
                 HighestEduLevel,
                 Skills,
                 WantedPosition) 
             VALUES ('"
                 .$id."','"
-                .$hedu."','"
-                .$skill."','"
-                .$position.
+                ."a"."','"
+                ."a"."','"
+                ."a".
                 
 
             "');";
@@ -142,12 +142,12 @@ else {
             //         $_SESSION['username'] = $row['username'];
             //         $_SESSION['fname'] = $row['FirstName'];
             //         $_SESSION['faname'] = $row['FamilyName'];
-            //         $_SESSION['id'] = $row['UserID'];
+            //         $_SESSION['id'] = $row['userID'];
             //         $_SESSION['age'] = $row['Age'];
             //         $_SESSION['email'] = $row['Email'];
             //         $_SESSION['pnum'] = $row['PhoneNumber'];
             //         $_SESSION['add'] = $row['Address'];
-            //         $_SESSION['utype'] = $row['UserType'];
+            //         $_SESSION['utype'] = $row['userType'];
     
                     
             //         header("location: home.php");
@@ -165,7 +165,7 @@ else {
             $_SESSION['sdate'] = $sdate;
             $pass = md5($_SESSION['password']);
 
-        $sql = "SELECT * FROM User WHERE username = '".$_SESSION['uname']."'";
+        $sql = "SELECT * FROM user WHERE username = '".$_SESSION['uname']."'";
         $result = mysqli_query($conn, $sql);
 
         if(mysqli_num_rows($result)>0) {
@@ -181,7 +181,7 @@ else {
                 PhoneNumber, 
                 Address, 
                 Password, 
-                UserType) 
+                userType) 
             VALUES ('"
                 .$_SESSION['fname']."','"
                 .$_SESSION['faname']."','"
@@ -203,7 +203,7 @@ else {
             $id = mysqli_insert_id($conn);
             echo $sdate;
             $sql3 = "INSERT INTO employer(
-                UserID, 
+                userID, 
                 CompanyID,
                 Role,
                 StartDate) 
