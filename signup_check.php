@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
         $repassword = validate($_POST['repassword']);
         $email = validate($_POST['email']);
     
-        // $user_data = "uname=" . $uname;
         $user_data = "uname=" . $uname ."&password=".$password;
 
         if(empty($uname)) {
@@ -42,13 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
             header("location: signup.php?error=Email is required&$user_data");
             exit();
         }  else {
-            
-
-            $hash_password = password_hash($password, PASSWORD_DEFAULT);
-
             $sql = "SELECT * FROM user WHERE username = '".$uname."'";
             $result = mysqli_query($conn, $sql);
-
+            
             if(mysqli_num_rows($result)>0) {
                 header("location: signup.php?error=The username is taken, please try another&$user_data");
                 exit();  
@@ -58,17 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
                     Email, 
                     Password) 
                 VALUES ('"
-                  
                     .$uname."','"
-                
-                    .$email."','"
-                
+                    .$email."','"     
                     .$password.
-                
-                    
-
-                
-
                 "');"; 
 
                 $result2 = mysqli_query($conn, $sql2);
@@ -82,14 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
                     .$id."','"
                     ."a"."','"
                     ."a"."','"
-                    ."a".
-                    
-
+                    ."a".  
                 "');";
                 $result3 = mysqli_query($conn, $sql3);
-        
 
-            
                 if($result2) {
                     header("location: index.php?success=Your account has been created");
                     exit();  

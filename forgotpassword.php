@@ -1,15 +1,17 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Forgot Password</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form action="login.php" method = "post">
+    <form action="forgotpwd_check.php" method = "post">
         <div id = "logo">
             <img src="./media/image/logo.png" alt="logo">
         </div>
-        <h2>Login</h2>
+        <h2>Forgot Password</h2>
 
         <?php
             if(isset($_GET['error'])){?>
@@ -29,9 +31,19 @@
             <input type="text" name = "uname" placeholder = "Username"><br>
 
         <?php } ?> 
+
+        <label>Email</label>
+        <?php
+            if(isset($_GET['Email'])){?>
+            <input type="text" name = "email" placeholder = "Email" value = <?php echo $_GET['Email']; ?>><br>
+          
+        <?php } else { ?>
+            <input type="text" name = "email" placeholder = "Email"><br>
+
+        <?php } ?> 
         
 
-        <label>Password</label>
+        <label>New Password</label>
         <?php
             if(isset($_GET['password'])){?>
             <input type="password" name = "password" placeholder = "Password" value = <?php echo $_GET['password']; ?>><br>
@@ -42,9 +54,7 @@
         <?php } ?> 
         
 
-        <button type = "submit">Login</button>
-        <a href="signup.php" class="ca">Create an account</a>
-        <a href="forgotpassword.php" class="ca">Forgot password</a>
+        <button type = "submit">Save</button>
     </form>
 </body>
 </html>

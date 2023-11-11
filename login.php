@@ -13,21 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     include "db_conn.php";
     $data = json_decode(file_get_contents('php://input'));
 
-    // if (
-    //     !isset($data->uname) ||
-    //     !isset($data->password) ||
-    //     empty(trim($data->uname)) ||
-    //     empty(trim($data->password))
-    // ):
-    //     sendJson(
-    //         // http status code
-    //         422,
-    //         // message
-    //         'Please fill all the required fields & None of the fields should be empty.',
-    //         // array
-    //         ['required_fields' => ['username', 'password']]
-    //     );
-    // endif;
 
     if (isset($_POST['uname']) && isset($_POST['password'])) {
         function validate($data) {
@@ -48,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
             exit();
         } else {
             $sql = "SELECT * FROM user Where username = '$uname' AND Password = '$password'";
-
             
             $result = mysqli_query($conn, $sql);
             
@@ -65,12 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
                    
                     exit(); 
                 } else {
-                
                     header("location: index.php?error=Incorrect username or password");
                     exit();                
                 }
-            } else {
-               
+            } else {           
                 header("location: index.php?error=Incorrect username or password");
                 exit();
             }

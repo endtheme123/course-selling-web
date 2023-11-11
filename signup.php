@@ -15,32 +15,19 @@
             if(isset($_GET['error'])){?>
           <p class = "error"><?php echo $_GET['error']; ?></p>  
         <?php } ?>
-       
-        <!-- <label>First Name</label>
-        <input type="text" name = "fname" placeholder = "First name"><br> -->
-
-        <!-- <label>Family Name</label>
-        <input type="text" name = "faname" placeholder = "Family name"><br> -->
-       
-
-        
+              
         <label>Email</label>
         <input type="text" name = "email" placeholder = "Email"><br>
 
-        
-
-
-       
         <label>Username</label>
         <?php
             if(isset($_GET['uname'])){?>
-            <input type="text" name = "uname" placeholder = "First name" value = <?php echo $_GET['uname']; ?>><br>
+            <input type="text" name = "uname" placeholder = "Username" value = <?php echo $_GET['uname']; ?>><br>
           
         <?php } else { ?>
-            <input type="text" name = "uname" placeholder = "First name"><br>
+            <input type="text" name = "uname" placeholder = "Username"><br>
 
         <?php } ?>        
-
 
         <label>Password</label>
         <input type="password" name = "password" placeholder = "Password"><br>
