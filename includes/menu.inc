@@ -14,10 +14,6 @@
    
     <li class="nav_item">
       <a class="nav-link <?php if ($currentPage == 'course.php') echo 'active'; ?>" href="course.php">Course</a>
-    </li>
-      <li class="nav_item">
-      <a class="nav-link <?php if ($currentPage == 'find_job.php') echo 'active'; ?>" href="find_job.php">Find job</a>
-    </li>
     <li class="nav_item">
       <a class="nav-link <?php if ($currentPage == 'profile.php') echo 'active'; ?>" href="profile.php">Profile</a>
     </li> 
