@@ -1,127 +1,111 @@
 
 
 <?php
-session_start();
-include "db_conn.php";
-if (isset($_POST['uname']) && isset($_POST['password']) && isset($_POST['repassword']) &&  isset($_POST['email'])) {
-    function validate($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-    $uname = validate($_POST['uname']);
-    $password = validate($_POST['password']);
-    $repassword = validate($_POST['repassword']);
-    $email = validate($_POST['email']);
- 
-    // $user_data = "uname=" . $uname;
-    $user_data = "uname=" . $uname ."&password=".$password;
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: access');
+header('Access-Control-Allow-Methods: POST');
+header('Content-Type: application/json; charset=UTF-8');
+header('Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
 
-    if(empty($uname)) {
-        header("location: signup.php?error=User Name is required&$user_data");
-        exit();
-    } else if (empty($password)) {
-        header("location: signup.php?error=Password is required&$user_data");
-        exit();
-    } else if (empty($repassword) || $repassword != $password) {
-        header("location: signup.php?error=Retyped password must be similar with password&$user_data");
-        exit();
-    } else if (empty($email)) {
-        header("location: signup.php?error=Email is required&$user_data");
-        exit();
-    }  else {
-        // $sql = "SELECT * FROM user Where username = '$uname' and Password = '$password'";
-        // $result = mysqli_query($conn, $sql);
-        
-        // if(mysqli_num_rows($result) === 1){
-        //     $row = mysqli_fetch_assoc($result);
-        //     if($row['username'] === $uname && $row['Password']===$password){
-        //         $_SESSION['username'] = $row['username'];
-        //         $_SESSION['fname'] = $row['FirstName'];
-        //         $_SESSION['faname'] = $row['FamilyName'];
-        //         $_SESSION['id'] = $row['UserID'];
-        //         $_SESSION['age'] = $row['Age'];
-        //         $_SESSION['email'] = $row['Email'];
-        //         $_SESSION['pnum'] = $row['PhoneNumber'];
-        //         $_SESSION['add'] = $row['Address'];
-        //         $_SESSION['utype'] = $row['UserType'];
+require_once __DIR__ . '/loginApi/database.php';
+require_once __DIR__ . '/loginApi/sendJson.php';
 
-                
-        //         header("location: home.php");
-        //         exit(); 
-        //     } else {
-        //         header("location: signup.php?error=Incorrect username or password");
-        //         exit();                
-        //     }
-        // } else {
-        //     header("location: signup.php?error=Incorrect username or password");
-        //     exit();
-        // }
-        // $_SESSION['email'] = $email;
-        // $_SESSION['uname'] = $uname;
-        // $_SESSION['password'] = $password;
-        // $_SESSION['repassword'] = $repassword;
+if ($_SERVER['REQUEST_METHOD'] == 'POST'):
+    session_start();
+    include "db_conn.php";
+    $data = json_decode(file_get_contents('php://input'));
+    if (isset($_POST['uname']) && isset($_POST['password']) && isset($_POST['repassword']) &&  isset($_POST['email'])) {
+        function validate($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+        $uname = validate($_POST['uname']);
+        $password = validate($_POST['password']);
+        $repassword = validate($_POST['repassword']);
+        $email = validate($_POST['email']);
+    
+        // $user_data = "uname=" . $uname;
+        $user_data = "uname=" . $uname ."&password=".$password;
 
-        $pass = md5($password);
+        if(empty($uname)) {
+            header("location: signup.php?error=User Name is required&$user_data");
+            exit();
+        } else if (empty($password)) {
+            header("location: signup.php?error=Password is required&$user_data");
+            exit();
+        } else if (empty($repassword) || $repassword != $password) {
+            header("location: signup.php?error=Retyped password must be similar with password&$user_data");
+            exit();
+        } else if (empty($email)) {
+            header("location: signup.php?error=Email is required&$user_data");
+            exit();
+        }  else {
+            
 
-        $sql = "SELECT * FROM user WHERE username = '".$uname."'";
-        $result = mysqli_query($conn, $sql);
+            $hash_password = password_hash($password, PASSWORD_DEFAULT);
 
-        if(mysqli_num_rows($result)>0) {
-            header("location: signup.php?error=The username is taken, please try another&$user_data");
-            exit();  
-        } else {
-            $sql2 = "INSERT INTO user(
-                username, 
-                Email, 
-                Password) 
-            VALUES ('"
-                // .$id."','"
-                .$uname."','"
-             
-                .$email."','"
-               
-                .$password.
-               
-                
+            $sql = "SELECT * FROM user WHERE username = '".$uname."'";
+            $result = mysqli_query($conn, $sql);
 
-              
-
-            "');"; 
-
-            $result2 = mysqli_query($conn, $sql2);
-            $id = mysqli_insert_id($conn);
-            $sql3 = "INSERT INTO student(
-                userID, 
-                HighestEduLevel,
-                Skills,
-                WantedPosition) 
-            VALUES ('"
-                .$id."','"
-                ."a"."','"
-                ."a"."','"
-                ."a".
-                
-
-            "');";
-            $result3 = mysqli_query($conn, $sql3);
-     
-
-           
-            if($result2) {
-                header("location: index.php?success=Your account has been created");
+            if(mysqli_num_rows($result)>0) {
+                header("location: signup.php?error=The username is taken, please try another&$user_data");
                 exit();  
             } else {
-                header("location: signup.php?error=unknowm error occured");
-                exit();  
-            }
-        }
+                $sql2 = "INSERT INTO user(
+                    username, 
+                    Email, 
+                    Password) 
+                VALUES ('"
+                  
+                    .$uname."','"
+                
+                    .$email."','"
+                
+                    .$hash_password.
+                
+                    
+
+                
+
+                "');"; 
+
+                $result2 = mysqli_query($conn, $sql2);
+                $id = mysqli_insert_id($conn);
+                $sql3 = "INSERT INTO student(
+                    userID, 
+                    HighestEduLevel,
+                    Skills,
+                    WantedPosition) 
+                VALUES ('"
+                    .$id."','"
+                    ."a"."','"
+                    ."a"."','"
+                    ."a".
+                    
+
+                "');";
+                $result3 = mysqli_query($conn, $sql3);
         
-        header("location: index.php?$user_data");
+
+            
+                if($result2) {
+                    header("location: index.php?success=Your account has been created");
+                    exit();  
+                } else {
+                    header("location: signup.php?error=unknowm error occured");
+                    exit();  
+                }
+            }
+            
+            header("location: index.php?$user_data");
+            exit();
+        }
+    } else {
+        header("location: signup.php?error");
         exit();
     }
-} else {
-    header("location: signup.php?error");
-    exit();
-}
+endif;
+
+sendJson(405, 'Invalid Request Method. HTTP method should be POST');
