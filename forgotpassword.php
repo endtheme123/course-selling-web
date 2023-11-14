@@ -9,7 +9,7 @@
 <body>
     <form action="forgotpwd_check.php" method = "post">
         <div id = "logo">
-            <img src="./media/image/logo.png" alt="logo">
+            <img src="./media/image/logo3.png" alt="logo">
         </div>
         <h2>Forgot Password</h2>
 
