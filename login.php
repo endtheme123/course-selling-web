@@ -1,4 +1,15 @@
 <?php
+/**
+ * This file use for login function.
+ * 
+ * It first checks if all required fields are filled in. If not, it throws an error.
+ * 
+ * It then checks if the password is match and the user is exist
+ * 
+ * If everything is ok, it allow user to login and heading to homepage / return a json message to announce user successfully login in postman.
+ * 
+ */
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: access');
 header('Access-Control-Allow-Methods: POST');
@@ -11,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     session_start();
     include "db_conn.php";
     
+    // check if all required fields are filled in ( for Postman )
     $data = json_decode(file_get_contents('php://input'));
 
     if (
@@ -20,12 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         empty(trim($data->password))
     ):
         if (isset($_POST['uname']) && isset($_POST['password'])) :
+            // sanitize the data
             function validate($data) {
                 $data = trim($data);
                 $data = stripslashes($data);
                 $data = htmlspecialchars($data);
                 return $data;
             }
+             // data that get from form fields
             $uname = validate($_POST['uname']);
             $password = validate($_POST['password']);
             
@@ -37,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
                 header("location: index.php?error=Password is required");
                 exit();
             } else {
+                // find user from database, if true => set session and login, direct to another page, if false return an error message 
                 $sql = "SELECT * FROM user Where username = '$uname' AND Password = '$password'";
                 
                 $result = mysqli_query($conn, $sql);
@@ -63,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
                 }
             }
         endif;
+        // if field empty, send error JSON format ( for Postman ) 
         sendJson(
             422,
             'Please fill all the required fields & None of the fields should be empty.',
@@ -70,12 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         );
     endif;
 
-
+    // use for Postman URL request
     $uname = mysqli_real_escape_string($conn, trim($data->uname));
     $password = trim($data->password);
 
    
-
+    // Same logic above
     $sql = "SELECT * FROM user Where username = '$uname' AND Password = '$password'";
     $query = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($query);

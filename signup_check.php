@@ -2,6 +2,17 @@
 
 
 <?php
+/**
+ * This file creates a new user account in the database.
+ * 
+ * It first checks if all required fields are filled in. If not, it throws an error.
+ * 
+ * It then checks if the username is already in use. If it is, it throws an error.
+ * 
+ * If everything is ok, it inserts the new user account into the database, and creates a new student record for the user. ( for both form action and Postman request )
+ * 
+ * It then sends a JSON response with the status of the operation.
+ */
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: access');
 header('Access-Control-Allow-Methods: POST');
@@ -35,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
                 $data = htmlspecialchars($data);
                 return $data;
             }
+
+            // data that get from form fields
             $uname = validate($_POST['uname']);
             $password = validate($_POST['password']);
             $_SESSION['password'] = $password;
@@ -57,6 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
                 header("location: signup.php?error=Email is required&$user_data");
                 exit();
             }  else {
+                // Find user from db, if user exist return message error, if not create new user
                 $sql = "SELECT * FROM user WHERE username = '".$uname."'";
                 $result = mysqli_query($conn, $sql);
                 
@@ -121,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'):
     $password = trim($inputApi->password);
     $repassword = trim($inputApi->repassword);
 
-    // check if user exxist
+    // check if user exist
     $sql4 = "SELECT * FROM user WHERE username = '".$uname."'";
     $query = mysqli_query($conn, $sql4);
     $row_num = mysqli_num_rows($query);

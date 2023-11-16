@@ -1,4 +1,5 @@
 <?php 
+// filter course by params passing in
 $extra_data = "";
 if(isset($_POST['search'])) {
     $extra_data = $extra_data . "&search=".$_POST['search'];

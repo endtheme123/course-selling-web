@@ -1,4 +1,5 @@
 <?php
+// function to send status and message format in JSON
 function sendJson(int $status, string $message, array $extra = []): void
 {
     $response = ['status' => $status];
