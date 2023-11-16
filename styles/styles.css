@@ -7,11 +7,11 @@ description: product.php, index.php, payment.php, about.php, enhancements.php
 */
 
 /* overall font setting for the whole site */
-@font-face {
+/* @font-face {
     font-family: "SF Pro Display";
     src: url("fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
     font-style: normal;
-}
+} */
 
 /* footer basic settings */
 footer {

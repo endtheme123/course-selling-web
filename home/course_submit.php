@@ -1,3 +1,6 @@
+
+
+
 <?php 
 session_start();
 include "../db_conn.php";
@@ -10,7 +13,7 @@ $sql3 = "INSERT INTO courseownership(
     Finish) 
 VALUES ("
     .$_SESSION['id'].","
-    .$_GET['CourseID'].",now(),"
+    .$_POST['CourseID'].",now(),"
     ."0".
     
 
